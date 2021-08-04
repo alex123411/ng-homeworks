@@ -15,7 +15,7 @@ export class GenderPipe implements PipeTransform {
     [Gender.FEMALE, GenderEmoji.FEMALE]
   ]);
   public transform(value: Gender): GenderEmoji | void {
-    return;
+    return this.genderEmoji.get(value)
   }
 
 }
