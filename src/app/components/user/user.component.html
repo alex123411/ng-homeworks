@@ -1,0 +1,13 @@
+<div *ngIf="user$ | async as user" >
+
+    <div class = 'user-id' >{{user.id}}</div>
+
+    <div class = 'user-first-name' >{{user.firstName}}</div>
+
+    <div class = 'user-last-name' >{{user.lastName}}</div>
+
+    <div class = 'user-gender' *ngIf="(user$.gender | async) == male " >👦</div>
+
+    <div class = 'user-gender' *ngIf="(user$.gender | async) == female " >👧</div>
+
+</div>

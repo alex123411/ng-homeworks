@@ -28,7 +28,8 @@ export class PermissionDirective implements OnInit, OnDestroy {
   }
 
   public hasPermission(userPermissions: Permission[]): boolean {
-    return false;
+    const hasPermission = userPermissions.some(elem=> this.allowedPermissions.indexOf(elem) >= 0)
+    return hasPermission;
   }
 
   private renderView() {
