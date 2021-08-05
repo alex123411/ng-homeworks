@@ -12,7 +12,9 @@ export interface User {
   gender: Gender;
 }
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class UserService {
   public getMovies$(): Observable<User[]> {
     return of([

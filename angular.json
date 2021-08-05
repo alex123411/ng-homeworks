@@ -118,6 +118,7 @@
   },
   "defaultProject": "lab-app",
   "cli": {
+    "analytics": "0ca5c6a1-713b-4ca7-80c9-b3644a51ddf5",
     "defaultCollection": "@angular-eslint/schematics"
   }
 }

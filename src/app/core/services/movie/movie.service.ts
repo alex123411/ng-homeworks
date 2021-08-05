@@ -7,7 +7,9 @@ export interface Movie {
   rating: 1 | 2 | 3 | 4 | 5;
 }
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class MovieService {
   public getMovies$(): Observable<Movie[]> {
     return of([
