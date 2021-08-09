@@ -42,7 +42,13 @@ export class MoviesService extends Store<Movie> {
         delay(1000),
         map(() => this.generateId()),
         tap((id: number) => {
-          //update state here
+          const movies = this.state$.getValue().entities;
+          this.setState({
+            entities: {
+              ...movies,
+              [id]: {...movie, id},
+            }
+          })
         }),
         finalize(() => this.setState({isLoading: false}))
       );
@@ -53,7 +59,13 @@ export class MoviesService extends Store<Movie> {
       .pipe(
         delay(1000),
         tap(() => {
-          //update state here
+          const movies = this.state$.getValue().entities;
+          this.setState({
+            entities: {
+              ...movies,
+              [movie.id]: movie,
+            }
+          })
         }),
         finalize(() => this.setState({isLoading: false})),
       );
@@ -64,7 +76,9 @@ export class MoviesService extends Store<Movie> {
       .pipe(
         delay(1000),
         tap(() => {
-          //update state here
+          const movies = this.state$.getValue().entities;
+          delete movies[movieId];
+          this.setState({entities : movies})  
         }),
         finalize(() => this.setState({isLoading: false})),
       );
