@@ -15,6 +15,7 @@ export class FamilyResolver implements Resolve<Family | undefined> {
     private readonly familyService: FamilyService,
   ) {}
   public resolve(route: ActivatedRouteSnapshot): Observable<Family | undefined> {
-    return of(undefined);
+    let Id = Number(route.params.id)
+    return this.familyService.getFamily$(Id);;
   }
 }

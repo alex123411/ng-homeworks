@@ -17,8 +17,32 @@ export class AddFamilyComponent implements OnInit {
   ) {
 
   }
-  public ngOnInit(): void {}
-  public addChild() {}
-  public removeChild(index: number) {}
-  public submit() {}
+  private newMember() {
+    return new FormGroup({
+      name: new FormControl(null, [Validators.required]),
+      age: new FormControl(null, [Validators.required])
+    });
+  }
+
+  public ngOnInit(): void {
+    this.familyForm = new FormGroup({
+      name: new FormControl(null, [Validators.required]),
+      father: this.newMember(),
+      mother: this.newMember(),
+      children: new FormArray([this.newMember()]) 
+    })
+  }
+
+  public addChild() {
+    const newChild = this.newMember();
+    this.children.push(newChild);
+  }
+
+  public removeChild(index: number) {
+    this.children.removeAt(index);
+  }
+
+  public submit() {
+    this.familyService.addFamily$(this.familyForm.value);
+  }
 }
